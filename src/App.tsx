@@ -5,6 +5,7 @@ import Pagar from "./pages/pagar";
 import Pagos from "./pages/pagos";
 import Guia from "./pages/guia";
 import Layout from "./pages/layout";
+import CalculadoraPagos from "./pages/calculadora";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
           <Route path="/pagar" element={<Pagar />} />
           <Route path="/pagos" element={<Pagos />} />
           <Route path="/guia" element={<Guia />} />
+          <Route path="/calculadora" element={<CalculadoraPagos />} />
         </Route>
       </Routes>
     </BrowserRouter>

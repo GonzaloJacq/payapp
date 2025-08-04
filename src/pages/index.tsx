@@ -13,6 +13,7 @@ export default function Index() {
           <CustomButton href="/pagar" label="Realizar pago" />
           <CustomButton href="/pagos" label="Historial de pagos" />
           <CustomButton href="/guia" label="Guía de pagos" />
+          <CustomButton href="/calculadora" label="calculadora" />
         </div>
       </div>
     </Body>
