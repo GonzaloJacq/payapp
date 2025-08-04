@@ -5,16 +5,16 @@ export const HeaderPages = ({ title }: { title: string }) => {
   const navigate = useNavigate();
 
   return (
-    <header className="w-full flex items-center px-4 py-3 border-b shadow-sm bg-white">
+    <header className="w-full p-6 rounded-lg  mb-2 flex items-center px-4 py-3  bg-gray-400/20 ">
       <button
         onClick={() => navigate(-1)}
-        className="mr-4 text-gray-600 hover:text-black transition-colors"
+        className="mr-4 text-white hover:text-black transition-colors"
         aria-label="Volver"
       >
         <ArrowLeft className="w-6 h-6" />
       </button>
 
-      <h1 className="text-xl font-semibold text-gray-800 text-center flex-1">
+      <h1 className="text-xl font-semibold  text-center flex-1 text-white">
         {title}
       </h1>
     </header>
