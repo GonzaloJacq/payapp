@@ -1,3 +1,10 @@
+import { HeaderPages } from "../features/index/components/headerPages";
+
 export default function Pagar() {
-  return <h2 className="text-3xl">Página de pago</h2>;
+  return (
+    <div>
+      <HeaderPages title="Pagar" />
+      <h2 className="text-3xl">Pagar</h2>
+    </div>
+  );
 }
