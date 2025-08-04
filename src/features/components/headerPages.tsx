@@ -11,7 +11,7 @@ export const HeaderPages = ({ title }: { title: string }) => {
         className="mr-4 text-white hover:text-black transition-colors"
         aria-label="Volver"
       >
-        <ArrowLeft className="w-6 h-6" />
+        <ArrowLeft className="w-6 h-6 cursor-pointer" />
       </button>
 
       <h1 className="text-xl font-semibold  text-center flex-1 text-white">

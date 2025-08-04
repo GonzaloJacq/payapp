@@ -1,4 +1,4 @@
-import { HeaderPages } from "../features/index/components/headerPages";
+import { HeaderPages } from "../features/components/headerPages";
 
 export default function Pagar() {
   return (
