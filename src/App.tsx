@@ -4,17 +4,17 @@ import Index from "./pages/index";
 import Pagar from "./pages/pagar";
 import Pagos from "./pages/pagos";
 import Guia from "./pages/guia";
-import Layout from "./layout";
 import CalculadoraPagos from "./pages/calculadora";
 import Login from "./pages/login";
+import PrivateLayout from "./privateLayout";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<Layout />}>
+        <Route path="/login" element={<Login />} />
+        <Route element={<PrivateLayout />}>
           <Route path="/" element={<Index />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/pagar" element={<Pagar />} />
           <Route path="/pagos" element={<Pagos />} />
           <Route path="/guia" element={<Guia />} />

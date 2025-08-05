@@ -2,12 +2,19 @@ import { Body } from "../features/components/body";
 import moneyLogo from "../assets/fly-money.svg";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
+import { useAuthStore } from "../features/store/user.store";
+import { useShallow } from "zustand/shallow";
 type FormInputs = {
   user: string;
   password: string;
 };
 export default function Login() {
   const navigate = useNavigate();
+  const { setCredentials } = useAuthStore(
+    useShallow((state) => ({
+      setCredentials: state.setCredentials,
+    }))
+  );
   const {
     register,
     handleSubmit,
@@ -16,6 +23,7 @@ export default function Login() {
 
   const onSubmit = (data: FormInputs) => {
     console.log("user: ", data);
+    setCredentials(data.user);
     navigate("/");
   };
 
