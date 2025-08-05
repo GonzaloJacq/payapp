@@ -13,6 +13,7 @@ type FormInputs = {
 export default function CalculadoraPagos() {
   const {
     register,
+
     handleSubmit,
     formState: { errors },
   } = useForm<FormInputs>();
@@ -49,8 +50,8 @@ export default function CalculadoraPagos() {
       tipoDGI === "monotributo"
         ? 1500
         : tipoDGI === "iva_minimo"
-        ? ingresosCalculados * 0.06
-        : 0;
+          ? ingresosCalculados * 0.06
+          : 0;
     const caja = tieneCajaProfesional ? 5000 : 0;
 
     const minimoNoImponible = 42960;
