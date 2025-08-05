@@ -21,6 +21,7 @@ export default function CalculadoraPagos() {
     bps: number;
     dgi: number;
     caja: number;
+    irpf: number;
     total: number;
   } | null>(null);
 
@@ -51,9 +52,34 @@ export default function CalculadoraPagos() {
         ? ingresosCalculados * 0.06
         : 0;
     const caja = tieneCajaProfesional ? 5000 : 0;
-    const total = bps + dgi + caja;
 
-    setResultado({ bps, dgi, caja, total });
+    const minimoNoImponible = 42960;
+    let irpf = 0;
+
+    const tramos = [
+      { hasta: 64440, tasa: 0.1 },
+      { hasta: 96660, tasa: 0.15 },
+      { hasta: 145020, tasa: 0.2 },
+      { hasta: Infinity, tasa: 0.22 },
+    ];
+
+    let base = minimoNoImponible;
+    const restante = ingresos;
+    irpf = 0;
+
+    for (const tramo of tramos) {
+      if (restante > base) {
+        const montoTramo = Math.min(restante, tramo.hasta) - base;
+        irpf += montoTramo * tramo.tasa;
+        base = tramo.hasta;
+      } else {
+        break;
+      }
+    }
+
+    const total = bps + dgi + caja + irpf;
+
+    setResultado({ bps, dgi, caja, irpf, total });
   };
 
   return (
@@ -148,6 +174,7 @@ export default function CalculadoraPagos() {
           <ul className="space-y-1">
             <li>🧾 BPS: ${resultado.bps.toFixed(2)}</li>
             <li>💰 DGI: ${resultado.dgi.toFixed(2)}</li>
+            <li>🧮 IRPF: ${resultado.irpf.toFixed(2)}</li>
             <li>📦 Caja Profesional: ${resultado.caja.toFixed(2)}</li>
             <li className="font-bold mt-2">
               💵 Total: ${resultado.total.toFixed(2)}

@@ -4,7 +4,7 @@ import Index from "./pages/index";
 import Pagar from "./pages/pagar";
 import Pagos from "./pages/pagos";
 import Guia from "./pages/guia";
-import Layout from "./pages/layout";
+import Layout from "./layout";
 import CalculadoraPagos from "./pages/calculadora";
 
 export default function App() {
