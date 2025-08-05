@@ -6,6 +6,7 @@ import Pagos from "./pages/pagos";
 import Guia from "./pages/guia";
 import Layout from "./layout";
 import CalculadoraPagos from "./pages/calculadora";
+import Login from "./pages/login";
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Index />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/pagar" element={<Pagar />} />
           <Route path="/pagos" element={<Pagos />} />
           <Route path="/guia" element={<Guia />} />
