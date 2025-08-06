@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { HeaderPages } from "../features/components/headerPages";
+import { HeaderPages } from "../features/components/ui/headerPages";
 
 type FormInputs = {
   tieneBPS: boolean;

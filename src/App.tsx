@@ -2,11 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Index from "./pages/index";
 import Pagar from "./pages/pagar";
-import Pagos from "./pages/pagos";
 import Guia from "./pages/guia";
 import CalculadoraPagos from "./pages/calculadora";
 import Login from "./pages/login";
-import PrivateLayout from "./privateLayout";
+import PrivateLayout from "./features/components/layout";
 
 export default function App() {
   return (
@@ -16,7 +15,6 @@ export default function App() {
         <Route element={<PrivateLayout />}>
           <Route path="/" element={<Index />} />
           <Route path="/pagar" element={<Pagar />} />
-          <Route path="/pagos" element={<Pagos />} />
           <Route path="/guia" element={<Guia />} />
           <Route path="/calculadora" element={<CalculadoraPagos />} />
         </Route>

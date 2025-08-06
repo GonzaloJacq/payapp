@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { useAuthStore } from "../features/store/user.store";
 import { useShallow } from "zustand/shallow";
-import Footer from "../footer";
+import Footer from "../features/components/footer";
 type FormInputs = {
   user: string;
   password: string;

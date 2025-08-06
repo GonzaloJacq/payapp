@@ -4,6 +4,7 @@ import { persist } from "zustand/middleware";
 type AuthState = {
   user: string;
   setCredentials: (user: string) => void;
+  logout: () => void;
 };
 
 export const useAuthStore = create<AuthState>()(
@@ -11,6 +12,7 @@ export const useAuthStore = create<AuthState>()(
     (set) => ({
       user: "",
       setCredentials: (user) => set({ user }),
+      logout: () => set({ user: "" }),
     }),
     {
       name: "auth-storage",

@@ -1,10 +1,10 @@
 import React, { useState, Suspense, lazy } from "react";
-import { HeaderPages } from "../features/components/headerPages";
+import { HeaderPages } from "../features/components/ui/headerPages";
 
-const PagoBPS = lazy(() => import("../features/pagos/pagoBPS"));
-const PagoDGI = lazy(() => import("../features/pagos/pagoDGI"));
+const PagoBPS = lazy(() => import("../features/components/pagos/pagoBPS"));
+const PagoDGI = lazy(() => import("../features/components/pagos/pagoDGI"));
 const PagoCajaProfesional = lazy(
-  () => import("../features/pagos/pagoCajaProfesional")
+  () => import("../features/components/pagos/pagoCajaProfesional")
 );
 
 export default function Pagar() {
@@ -44,7 +44,6 @@ export default function Pagar() {
           <option value="BPS">BPS - Aportes y Contribuciones</option>
           <option value="DGI">DGI - Impuestos</option>
           <option value="CajaProfesional">Caja Profesional</option>
-          <option value="Otro">Otro</option>
         </select>
 
         <div className="mt-4">

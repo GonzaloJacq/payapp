@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { HeaderPages } from "../features/components/headerPages";
+import { HeaderPages } from "../features/components/ui/headerPages";
 import { Body } from "../features/components/body";
 
 export default function Guia() {

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { Body } from "./body";
-import Footer from "../../footer";
+import Footer from "./footer";
 
 export default function DeniedAcces() {
   const navigate = useNavigate();

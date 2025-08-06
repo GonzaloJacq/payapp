@@ -1,6 +1,7 @@
+import { BookOpen, Calculator, CreditCard } from "lucide-react";
 import moneyLogo from "../assets/fly-money.svg";
 import { Body } from "../features/components/body";
-import { CustomButton } from "../features/components/customButton";
+import { CustomButton } from "../features/components/ui/customButton";
 export default function Index() {
   return (
     <Body>
@@ -10,10 +11,21 @@ export default function Index() {
         </div>
         <h1 className="text-5xl">My PayApp</h1>
         <div>
-          <CustomButton href="/pagar" label="Realizar pago" />
-          <CustomButton href="/pagos" label="Historial de pagos" />
-          <CustomButton href="/guia" label="Guía de pagos" />
-          <CustomButton href="/calculadora" label="calculadora" />
+          <CustomButton
+            icon={<CreditCard />}
+            href="/pagar"
+            label="Realizar pago"
+          />
+          <CustomButton
+            icon={<BookOpen />}
+            href="/guia"
+            label="Guía de pagos"
+          />
+          <CustomButton
+            icon={<Calculator />}
+            href="/calculadora"
+            label="Calculadora"
+          />
         </div>
       </div>
     </Body>
