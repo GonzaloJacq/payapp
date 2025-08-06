@@ -1,8 +1,10 @@
 import { useShallow } from "zustand/shallow";
 import { useAuthStore } from "../store/user.store";
 import { useNavigate } from "react-router";
+import { User } from "lucide-react";
+import { LinkPages } from "../../routes/routes";
 
-export const Header = ({}) => {
+export const Header = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuthStore(
     useShallow((state) => ({
@@ -12,12 +14,14 @@ export const Header = ({}) => {
   );
   const handleLogout = () => {
     logout();
-    navigate("/login");
+    navigate(LinkPages.LOGIN);
   };
 
   return (
-    <div className="flex justify-between text-xl">
-      <span>Bienvenido {user}</span>
+    <div className="flex items-center justify-between text-xl">
+      <div className="flex gap-2">
+        <User className="mt-0.5" /> {user}
+      </div>
       <button
         className="text-blue-500 hover:underline cursor-pointer"
         onClick={handleLogout}

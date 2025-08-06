@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { useAuthStore } from "../features/store/user.store";
 import { useShallow } from "zustand/shallow";
 import Footer from "../features/components/footer";
+import { LinkPages } from "../routes/routes";
 type FormInputs = {
   user: string;
   password: string;
@@ -25,10 +26,10 @@ export default function Login() {
   const onSubmit = (data: FormInputs) => {
     console.log("user: ", data);
     setCredentials(data.user);
-    navigate("/");
+    navigate(LinkPages.INDEX);
   };
   const handleRegister = () => {
-    navigate("/registro");
+    navigate(LinkPages.REGISTRO);
   };
 
   return (
@@ -45,6 +46,9 @@ export default function Login() {
               className="gap-4 flex flex-col"
             >
               <div>
+                <label htmlFor="user" className="block mb-1 font-medium ">
+                  Nombre de usuario
+                </label>
                 <input
                   className="w-full p-2 border rounded"
                   step={"0.01"}
@@ -64,6 +68,9 @@ export default function Login() {
                 )}
               </div>
               <div>
+                <label htmlFor="user" className="block mb-1 font-medium ">
+                  Contraseña
+                </label>
                 <input
                   className="w-full p-2 border rounded"
                   step={"0.01"}

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import Footer from "../features/components/footer";
 import Swal from "sweetalert2";
+import { LinkPages } from "../routes/routes";
 type FormInputs = {
   user: string;
   email: string;
@@ -30,7 +31,7 @@ export default function Registro() {
       confirmButtonText: "Aceptar",
       confirmButtonColor: "#22C55E",
     }).then(() => {
-      navigate("/login");
+      navigate(LinkPages.LOGIN);
     });
   };
 
@@ -137,7 +138,7 @@ export default function Registro() {
                 <button
                   type="button"
                   className="text-blue-600 hover:underline transition"
-                  onClick={() => navigate("/login")}
+                  onClick={() => navigate(LinkPages.LOGIN)}
                 >
                   Ya tengo cuenta
                 </button>

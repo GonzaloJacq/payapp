@@ -2,12 +2,13 @@ import { useNavigate } from "react-router";
 import { Body } from "./body";
 import Footer from "./footer";
 import { AlertTriangle } from "lucide-react";
+import { LinkPages } from "../../routes/routes";
 
 export default function DeniedAcces() {
   const navigate = useNavigate();
 
   const handleRedirect = () => {
-    navigate("/login");
+    navigate(LinkPages.LOGIN);
   };
 
   return (

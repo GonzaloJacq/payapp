@@ -7,18 +7,19 @@ import CalculadoraPagos from "./pages/calculadora";
 import Login from "./pages/login";
 import PrivateLayout from "./features/components/layout";
 import Registro from "./pages/registro";
+import { LinkPages } from "./routes/routes";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/registro" element={<Registro />} />
+        <Route path={LinkPages.LOGIN} element={<Login />} />
+        <Route path={LinkPages.REGISTRO} element={<Registro />} />
         <Route element={<PrivateLayout />}>
-          <Route path="/" element={<Index />} />
-          <Route path="/pagar" element={<Pagar />} />
-          <Route path="/guia" element={<Guia />} />
-          <Route path="/calculadora" element={<CalculadoraPagos />} />
+          <Route path={LinkPages.INDEX} element={<Index />} />
+          <Route path={LinkPages.PAGAR} element={<Pagar />} />
+          <Route path={LinkPages.GUIA} element={<Guia />} />
+          <Route path={LinkPages.CALCULADORA} element={<CalculadoraPagos />} />
         </Route>
       </Routes>
     </BrowserRouter>
