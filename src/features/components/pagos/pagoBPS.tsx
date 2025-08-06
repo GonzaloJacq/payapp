@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 type FormInputs = {
   monto: number;
@@ -10,12 +11,20 @@ export default function PagoBPS() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormInputs>();
 
   const onSubmit = (data: FormInputs) => {
-    console.log("Datos Pago BPS:", data);
-    alert("Pago BPS registrado!");
+    Swal.fire({
+      title: "Pago de BPS registrado!",
+      text: `$${data.monto.toFixed(2)} para el mes de ${data.mesPago} con método ${data.metodoPago}`,
+      icon: "success",
+      confirmButtonText: "Aceptar",
+      confirmButtonColor: "#22C55E",
+    }).then((result) => {
+      if (result.isConfirmed) reset();
+    });
   };
 
   return (
@@ -36,6 +45,7 @@ export default function PagoBPS() {
             {...register("monto", {
               required: "El monto es obligatorio",
               min: { value: 1, message: "Debe ser mayor a 0" },
+              valueAsNumber: true,
             })}
             className="w-full p-2 border rounded"
             step="0.01"

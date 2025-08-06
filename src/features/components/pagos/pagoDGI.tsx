@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 type FormInputs = {
   impuesto: string;
@@ -11,12 +12,20 @@ export default function PagoDGI() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormInputs>();
 
   const onSubmit = (data: FormInputs) => {
-    console.log("Datos Pago DGI:", data);
-    alert("Pago DGI registrado!");
+    Swal.fire({
+      title: "Pago de DGI registrado!",
+      text: `$${data.monto.toFixed(2)} para el periodo ${data.periodo} con método ${data.metodoPago} y el impuesto ${data.impuesto}`,
+      icon: "success",
+      confirmButtonText: "Aceptar",
+      confirmButtonColor: "#22C55E",
+    }).then((result) => {
+      if (result.isConfirmed) reset();
+    });
   };
 
   return (
@@ -72,6 +81,7 @@ export default function PagoDGI() {
             {...register("monto", {
               required: "El monto es obligatorio",
               min: { value: 1, message: "Debe ser mayor a 0" },
+              valueAsNumber: true,
             })}
             className="w-full p-2 border rounded"
             step="0.01"

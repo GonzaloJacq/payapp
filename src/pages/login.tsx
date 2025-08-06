@@ -27,16 +27,19 @@ export default function Login() {
     setCredentials(data.user);
     navigate("/");
   };
+  const handleRegister = () => {
+    navigate("/registro");
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
       <Body>
         <div className="flex-1 flex items-center justify-center p-4">
           <div className="flex flex-col gap-4 max-w-md w-full">
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center flex-col items-center">
               <img src={moneyLogo} className="h-32 w-32 " alt="React logo" />
+              <h1 className="text-5xl">My Payapp</h1>
             </div>
-            <h1 className="text-5xl">My Payapp</h1>
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="gap-4 flex flex-col"
@@ -83,6 +86,7 @@ export default function Login() {
                 <button
                   type="button"
                   className="hover:text-blue-500 cursor-pointer transition"
+                  onClick={handleRegister}
                 >
                   registrarse
                 </button>
