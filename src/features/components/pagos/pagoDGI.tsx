@@ -63,7 +63,14 @@ export default function PagoDGI() {
           <input
             type="month"
             id="periodo"
-            {...register("periodo", { required: "Seleccioná un período" })}
+            {...register("periodo", {
+              required: "Seleccioná un período",
+              validate: (value) => {
+                const fecha = new Date(value + "-01");
+                const hoy = new Date();
+                return fecha <= hoy || "El período no puede ser futuro";
+              },
+            })}
             className="w-full p-2 border rounded"
           />
           {errors.periodo && (
@@ -81,6 +88,7 @@ export default function PagoDGI() {
             {...register("monto", {
               required: "El monto es obligatorio",
               min: { value: 1, message: "Debe ser mayor a 0" },
+              max: { value: 999999, message: "Monto demasiado alto" },
               valueAsNumber: true,
             })}
             className="w-full p-2 border rounded"

@@ -1,4 +1,3 @@
-// src/PrivateLayout.tsx
 import { Outlet } from "react-router";
 import Footer from "./footer";
 import { useAuthStore } from "../store/user.store";
@@ -14,7 +13,7 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen flex flex-col p-4">
-        <Header />
+      <Header />
       <main className="flex flex-1 flex-col">
         <Outlet />
       </main>

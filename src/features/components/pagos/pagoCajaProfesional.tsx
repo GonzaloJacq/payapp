@@ -5,6 +5,7 @@ type FormInputs = {
   monto: number;
   periodo: string;
   metodoPago: string;
+  afiliado: string;
 };
 
 export default function PagoCajaProfesional() {
@@ -45,6 +46,10 @@ export default function PagoCajaProfesional() {
             {...register("monto", {
               required: "El monto es obligatorio",
               min: { value: 1, message: "Debe ser mayor a 0" },
+              max: {
+                value: 999999,
+                message: "Monto muy alto, revisá el valor",
+              },
               valueAsNumber: true,
             })}
             className="w-full p-2 border rounded"
@@ -63,7 +68,14 @@ export default function PagoCajaProfesional() {
           <input
             type="month"
             id="periodo"
-            {...register("periodo", { required: "Seleccioná un período" })}
+            {...register("periodo", {
+              required: "Seleccioná un período",
+              validate: (value) => {
+                const inputDate = new Date(value + "-01");
+                const today = new Date();
+                return inputDate <= today || "No podés pagar un período futuro";
+              },
+            })}
             className="w-full p-2 border rounded"
           />
           {errors.periodo && (
@@ -88,6 +100,27 @@ export default function PagoCajaProfesional() {
           </select>
           {errors.metodoPago && (
             <p className="text-red-600 mt-1">{errors.metodoPago.message}</p>
+          )}
+        </div>
+
+        <div>
+          <label htmlFor="afiliado" className="block font-semibold mb-1">
+            Nº de afiliado
+          </label>
+          <input
+            type="text"
+            id="afiliado"
+            {...register("afiliado", {
+              required: "El número de afiliado es obligatorio",
+              pattern: {
+                value: /^\d{6,8}$/,
+                message: "Debe tener entre 6 y 8 dígitos numéricos",
+              },
+            })}
+            className="w-full p-2 border rounded"
+          />
+          {errors.afiliado && (
+            <p className="text-red-600 mt-1">{errors.afiliado.message}</p>
           )}
         </div>
 

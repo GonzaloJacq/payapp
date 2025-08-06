@@ -45,6 +45,10 @@ export default function PagoBPS() {
             {...register("monto", {
               required: "El monto es obligatorio",
               min: { value: 1, message: "Debe ser mayor a 0" },
+              max: {
+                value: 999999,
+                message: "Monto muy alto, revisá que esté bien",
+              },
               valueAsNumber: true,
             })}
             className="w-full p-2 border rounded"
@@ -63,7 +67,15 @@ export default function PagoBPS() {
           <input
             type="month"
             id="mesPago"
-            {...register("mesPago", { required: "Seleccioná el mes" })}
+            {...register("mesPago", {
+              required: "Seleccioná el mes",
+              validate: (value) => {
+                const inputDate = new Date(value + "-01");
+                const today = new Date();
+                if (inputDate > today) return "No podés pagar un mes futuro";
+                return true;
+              },
+            })}
             className="w-full p-2 border rounded"
           />
           {errors.mesPago && (
